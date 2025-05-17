@@ -7,73 +7,66 @@ To implement Opening and Closing using Python and OpenCV.
 2. OpenCV
 ## Algorithm:
 ### Step1:
-
-Load the input image using cv2.imread().
+Import the necessary packages.
 
 ### Step2:
-
-Define a structuring element (e.g., 5x5 rectangular) using cv2.getStructuringElement().
-
+Create the Text using cv2.putText.
 
 ### Step3:
-
-Perform erosion followed by dilation using cv2.morphologyEx() with the cv2.MORPH_OPEN operation.
-
+Create the structuring element.
 
 ### Step4:
-
-Perform dilation followed by erosion using cv2.morphologyEx() with the cv2.MORPH_CLOSE operation.
-
+Use Opening operation.
 
 ### Step5:
-
-Use plt.subplot() to show the original, opening, and closing images side by side.
-
-
- 
+Use Closing Operation. 
 ## Program:
-
-``` Python
+```
+DEVELOPED BY: ROGITH GANESH.R
+REGISTER NO: 212223100046
+```
+# Import the necessary packages
+```
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-
-img1=np.zeros((300,600),dtype='uint8')
-font=cv2.FONT_ITALIC
-img2=cv2.putText(img1,"sai",(5,100),font,3,(255,0,0),5,cv2.LINE_AA)
-cv2.imshow("Original",img2)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-#kernel1=cv2.getStructuringElement(cv2.MORPH_RECT,(21,21))
-#kernel2=cv2.getStructuringElement(cv2.MORPH_RECT,(9,9))
-kernel1=cv2.getStructuringElement(cv2.MORPH_RECT,(21,21))
-kernel2=cv2.getStructuringElement(cv2.MORPH_RECT,(9,9))
-
-img4=cv2.morphologyEx(img1,cv2.MORPH_OPEN,kernel2)
-cv2.imshow("Opening",img4)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-img3=cv2.morphologyEx(img1,cv2.MORPH_CLOSE,kernel1)
-cv2.imshow("Closing",img3)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+```
+# Create the Text using cv2.putText
+```
+img = np.zeros((100, 550), dtype = 'uint8')
+font = cv2.FONT_ITALIC
+cv2.putText(img, 'ROGITH', (5,70), font, 2, (255), 5, cv2.LINE_AA)
+n_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+plt.imshow(n_img)
+plt.axis("off")
+```
+# Create the structuring element
+```
+kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (11,11))
+```
+# Use Opening operation
+```
+image_open = cv2.morphologyEx(n_img, cv2.MORPH_OPEN, kernel)
+plt.imshow(image_open)
+plt.axis("off")
+```
+# Use Closing Operation
+```
+image_close = cv2.morphologyEx(n_img, cv2.MORPH_CLOSE, kernel)
+plt.imshow(image_close)
+plt.axis("off")
 ```
 ## Output:
+![Screenshot 2025-05-17 060010](https://github.com/user-attachments/assets/6ec640b4-7d8f-4d01-88eb-6ea28be66996)
+
 
 ### Display the input Image
-![WhatsApp Image 2025-05-04 at 14 37 59_66b10cd8](https://github.com/user-attachments/assets/447c2458-4504-4e61-89fb-da4df98e81ca)
-
-
+![Screenshot 2025-05-17 060028](https://github.com/user-attachments/assets/694677ca-12c0-45e9-a69b-cbd34436c92d)
 
 
 ### Display the result of Opening
-![WhatsApp Image 2025-05-04 at 14 38 13_db2fd5f6](https://github.com/user-attachments/assets/e4ce8ebf-2000-463d-b843-ce677ee001f1)
 
-### Display the result of Closing
-![WhatsApp Image 2025-05-04 at 14 38 26_51924e56](https://github.com/user-attachments/assets/f89827f2-7e60-4c9d-9b28-b2a729fd7f8d)
-
+![Screenshot 2025-05-17 060039](https://github.com/user-attachments/assets/476917cc-ff5d-4cb6-8361-e6982ef59bc6)
 
 
 ## Result
